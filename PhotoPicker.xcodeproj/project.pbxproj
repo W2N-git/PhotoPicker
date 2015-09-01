@@ -12,6 +12,7 @@
 		F35D76B51B9623BC00C3ACCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35D76B31B9623BC00C3ACCB /* Main.storyboard */; };
 		F35D76B71B9623BC00C3ACCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35D76B61B9623BC00C3ACCB /* Assets.xcassets */; };
 		F35D76BA1B9623BC00C3ACCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35D76B81B9623BC00C3ACCB /* LaunchScreen.storyboard */; };
+		F35D76C21B9623C100C3ACCB /* GetPhotoAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D76C11B9623C100C3ACCB /* GetPhotoAdapter.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		F35D76B61B9623BC00C3ACCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F35D76B91B9623BC00C3ACCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F35D76BB1B9623BC00C3ACCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F35D76C11B9623C100C3ACCB /* GetPhotoAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPhotoAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				F35D76AF1B9623BC00C3ACCB /* AppDelegate.swift */,
 				F35D76B11B9623BC00C3ACCB /* ViewController.swift */,
+				F35D76C11B9623C100C3ACCB /* GetPhotoAdapter.swift */,
 				F35D76B31B9623BC00C3ACCB /* Main.storyboard */,
 				F35D76B61B9623BC00C3ACCB /* Assets.xcassets */,
 				F35D76B81B9623BC00C3ACCB /* LaunchScreen.storyboard */,
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F35D76C21B9623C100C3ACCB /* GetPhotoAdapter.swift in Sources */,
 				F35D76B21B9623BC00C3ACCB /* ViewController.swift in Sources */,
 				F35D76B01B9623BC00C3ACCB /* AppDelegate.swift in Sources */,
 			);
@@ -247,8 +251,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -258,8 +263,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -283,6 +289,7 @@
 				F35D76C01B9623BC00C3ACCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
