@@ -1,0 +1,31 @@
+/* 
+  ImagePickerLocalization.strings
+  PhotoPicker
+
+  Created by Anton Belousov on 02/09/15.
+  Copyright © 2015 novilab-mobile. All rights reserved.
+*/
+
+"choose_photo_source_title"   = "Chouse source";
+
+"photo_source_button_title_Camera"           = "Camera";
+"photo_source_button_title_PhotoLibrary"     = "Photo library";
+"photo_source_button_title_SavedPhotosAlbum" = "Saved photos album";
+
+"cancel_button_title" = "Cancel";
+
+"permission_restricted_title_Camera"           = "You have no access to camera, possibly due to active restrictions such as parental controls being in place.";
+"permission_restricted_title_PhotoLibrary"     = "You have no access to photo library, possibly due to active restrictions such as parental controls being in place.";
+"permission_restricted_title_SavedPhotosAlbum" = "You have no access to saved photos album, possibly due to active restrictions such as parental controls being in place.";
+
+
+"go_to_settings_title_Camera"           = "You should enable camera in settings";
+"go_to_settings_title_PhotoLibrary"     = "You should enable photo library in settings";
+"go_to_settings_title_SavedPhotosAlbum" = "You should enable photo library in settings";
+
+"go_to_settings_message"      = "Warning. As you change this authorization status in \"Settings\" current application will be relaunched. ";
+
+"go_to_settings_button_title" = "Open Settings";
+
+"no_access_to_photo_title"    = "You have no access to any kind of photo sources";
+"no_access_to_photo_message"  = "Check that Camera is working.";

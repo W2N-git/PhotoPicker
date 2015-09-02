@@ -1,0 +1,32 @@
+/* 
+  ImagePickerLocalization.strings
+  PhotoPicker
+
+  Created by Anton Belousov on 02/09/15.
+  Copyright © 2015 novilab-mobile. All rights reserved.
+*/
+
+
+"choose_photo_source_title" = "Выберите источник фото";
+
+"photo_source_button_title_Camera"           = "Фотокамера";
+"photo_source_button_title_PhotoLibrary"     = "Медиатека";
+"photo_source_button_title_SavedPhotosAlbum" = "Сохраненные фотографии";
+
+"cancel_button_title" = "Отмена";
+
+"permission_restricted_title_Camera"           = "У вас нет доступа к камере, возможно из-за настроек родительского доступа.";
+"permission_restricted_title_PhotoLibrary"     = "У вас нет доступа к медиатеке, возможно из-за настроек родительского доступа.";
+"permission_restricted_title_SavedPhotosAlbum" = "У вас нет доступа к сохраненным фотографиям, возможно из-за настроек родительского доступа.";
+
+
+"go_to_settings_title_Camera"           = "Доступ к камере был отключен. Вы можете перейти в приложение \"Настройки\" и включить его.";
+"go_to_settings_title_PhotoLibrary"     = "Доступ к медиатеке был отключен. Вы можете перейти в приложение \"Настройки\" и включить его.";
+"go_to_settings_title_SavedPhotosAlbum" = "Доступ к сохраненным фотографиям был отключен. Вы можете перейти в приложение \"Настройки\" и включить его.";
+
+"go_to_settings_message"      = "Внимание. После смены настроек доступа приложение будет перезапущено.";
+
+"go_to_settings_button_title" = "Открыть настройки";
+
+"no_access_to_photo_title"    = "У вас нет доступа ни к одному источнику фотографий";
+"no_access_to_photo_message"  = "Проверьте работоспособность камеры.";

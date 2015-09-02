@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B8DFB4E1B96F3A500798E7A /* UIImagePickerController+closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8DFB4D1B96F3A500798E7A /* UIImagePickerController+closure.swift */; };
+		F32BD76D1B96FFF6007E2446 /* ImagePickerLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = F32BD76F1B96FFF6007E2446 /* ImagePickerLocalization.strings */; };
 		F35D76B01B9623BC00C3ACCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D76AF1B9623BC00C3ACCB /* AppDelegate.swift */; };
 		F35D76B21B9623BC00C3ACCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D76B11B9623BC00C3ACCB /* ViewController.swift */; };
 		F35D76B51B9623BC00C3ACCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35D76B31B9623BC00C3ACCB /* Main.storyboard */; };
@@ -18,6 +19,10 @@
 
 /* Begin PBXFileReference section */
 		5B8DFB4D1B96F3A500798E7A /* UIImagePickerController+closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+closure.swift"; sourceTree = "<group>"; };
+		F32BD76E1B96FFF6007E2446 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ImagePickerLocalization.strings; sourceTree = "<group>"; };
+		F32BD7701B970006007E2446 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		F32BD7711B970006007E2446 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F32BD7721B970006007E2446 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ImagePickerLocalization.strings; sourceTree = "<group>"; };
 		F35D76AC1B9623BC00C3ACCB /* PhotoPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35D76AF1B9623BC00C3ACCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F35D76B11B9623BC00C3ACCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +66,7 @@
 				F35D76AF1B9623BC00C3ACCB /* AppDelegate.swift */,
 				F35D76B11B9623BC00C3ACCB /* ViewController.swift */,
 				F35D76C11B9623C100C3ACCB /* GetPhotoAdapter.swift */,
+				F32BD76F1B96FFF6007E2446 /* ImagePickerLocalization.strings */,
 				5B8DFB4D1B96F3A500798E7A /* UIImagePickerController+closure.swift */,
 				F35D76B31B9623BC00C3ACCB /* Main.storyboard */,
 				F35D76B61B9623BC00C3ACCB /* Assets.xcassets */,
@@ -112,6 +118,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F35D76A31B9623BC00C3ACCB;
 			productRefGroup = F35D76AD1B9623BC00C3ACCB /* Products */;
@@ -129,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F35D76BA1B9623BC00C3ACCB /* LaunchScreen.storyboard in Resources */,
+				F32BD76D1B96FFF6007E2446 /* ImagePickerLocalization.strings in Resources */,
 				F35D76B71B9623BC00C3ACCB /* Assets.xcassets in Resources */,
 				F35D76B51B9623BC00C3ACCB /* Main.storyboard in Resources */,
 			);
@@ -151,10 +159,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F32BD76F1B96FFF6007E2446 /* ImagePickerLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F32BD76E1B96FFF6007E2446 /* en */,
+				F32BD7721B970006007E2446 /* ru */,
+			);
+			name = ImagePickerLocalization.strings;
+			sourceTree = "<group>";
+		};
 		F35D76B31B9623BC00C3ACCB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F35D76B41B9623BC00C3ACCB /* Base */,
+				F32BD7701B970006007E2446 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -163,6 +181,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F35D76B91B9623BC00C3ACCB /* Base */,
+				F32BD7711B970006007E2446 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
