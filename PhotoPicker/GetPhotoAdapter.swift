@@ -7,8 +7,32 @@
 //
 
 import UIKit
+import Photos
 import AVFoundation
 import AssetsLibrary
+
+enum AuthorizationStatus : Int {
+    
+    case NotDetermined // User has not yet made a choice with regards to this application
+    case Restricted // This application is not authorized to access photo data.
+    // The user cannot change this application’s status, possibly due to active restrictions
+    //   such as parental controls being in place.
+    case Denied // User has explicitly denied this application access to photos data.
+    case Authorized // User has authorized this application to access photos data.
+}
+
+extension UIImagePickerControllerSourceType: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .Camera:
+            return "Camera"
+        case .PhotoLibrary:
+            return "PhotoLibrary"
+        case .SavedPhotosAlbum:
+            return "SavedPhotosAlbum"
+        }
+    }
+}
 
 class GetPhotoAdapter: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -29,32 +53,19 @@ class GetPhotoAdapter: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     
     //MARK: - Types picking
     
+    var allSourceTypes: [UIImagePickerControllerSourceType] = [
+        .PhotoLibrary,
+        .Camera,
+        .SavedPhotosAlbum
+    ]
+    
     var availableProtoSources: [UIImagePickerControllerSourceType] {
-        
-        let types : [UIImagePickerControllerSourceType] = [
-            .Camera,
-            .PhotoLibrary,
-            .SavedPhotosAlbum
-        ]
-        
-        var availableTypes = [UIImagePickerControllerSourceType]()
-        
-        for type in types {
-        
-            if UIImagePickerController.isSourceTypeAvailable(type) {
-                availableTypes.append(type)
-            }
-        }
-        
-        return availableTypes
+        return allSourceTypes.filter { UIImagePickerController.isSourceTypeAvailable($0) }
     }
     
     func showAvailablePhotoSourcesPicker(completion: (UIImage?) -> ()) {
         
         //TODO: Move after source type chouse before picker view show
-        
-        self.showPermissionPromptIfNeeded()
-        
         if self.availableProtoSources.count == 0 {
             self.showNoPhotoTypesAvailableMessage()
             return
@@ -64,73 +75,93 @@ class GetPhotoAdapter: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         
         for type in self.availableProtoSources {
         
-            let action = UIAlertAction(title: "title_for_photo_source_type_\(type.rawValue)", style: UIAlertActionStyle.Default) {
+            let action = UIAlertAction(title: "photo_source_button_title_\(type)", style: UIAlertActionStyle.Default) {
                 [unowned self]
                 _ in
-                self.getPhotoFromSource(type, completion: completion)
+                self.sourceTypeChoused(type, completion: completion)
             }
             alertVC.addAction(action)
         }
         
-        let cancelAction = UIAlertAction(title: "cancel_action_title", style: UIAlertActionStyle.Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "cancel_button_title", style: UIAlertActionStyle.Cancel, handler: nil)
         alertVC.addAction(cancelAction)
         
         self.currentPresentedViewController?.presentViewController(alertVC, animated: true, completion: nil)
     }
     
-    func showPermissionPromptIfNeeded() {
-        
-        //For Photo Library
-
-        let libPermissionsStatus = ALAssetsLibrary.authorizationStatus()
-        
-        switch libPermissionsStatus {
+    func sourceTypeChoused(type: UIImagePickerControllerSourceType, completion: (UIImage?) -> ()) {
+    
+        switch self.authorizationStatusForSourceType(type) {
+        case .NotDetermined:
+            self.getPhotoFromSource(type, completion: completion)
         case .Authorized:
-            print("FUNC: \(__FUNCTION__), LINE:\(__LINE__) everithing ok")
+            self.getPhotoFromSource(type, completion: completion)
         case .Denied:
-            print("FUNC: \(__FUNCTION__), LINE:\(__LINE__) should show alert")
-            self.showPermissionPromtForSourceType(.PhotoLibrary)
-        case let otherStatus:
-            print("FUNC: \(__FUNCTION__), LINE:\(__LINE__) do not know what to do with this status: \(otherStatus.rawValue)")
-        }
-        
-        
-        //For Camera
-        let status : AVAuthorizationStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo);
-        
-        switch status {
-        case .Authorized:
-            print("FUNC: \(__FUNCTION__), LINE:\(__LINE__) everithing ok")
-        case .Denied:
-            print("FUNC: \(__FUNCTION__), LINE:\(__LINE__) should show alert")
-            self.showPermissionPromtForSourceType(.Camera)
-        case let otherStatus:
-            print("FUNC: \(__FUNCTION__), LINE:\(__LINE__) do not know what to do with this status: \(otherStatus.rawValue)")
+            self.showPermissionPromtForSourceType(type)
+        case .Restricted:
+            self.showPermissionPromtForSourceType(type)
         }
     }
     
-    func showPermissionPromtForSourceType(type: UIImagePickerControllerSourceType) {
+    //MARK: - Source Type Auth Status
     
-        let alertController = UIAlertController (title: "<##>", message: "<##>", preferredStyle: .Alert)
+    func authorizationStatusForSourceType(type: UIImagePickerControllerSourceType) -> AuthorizationStatus {
+    
+        switch type {
+        case .Camera:
+            return self.authorizationStatusForCamera()
+        default:
+            return self.authorizationStatusForPhotoLibrary()
+        }
+    }
+    
+    func authorizationStatusForCamera() -> AuthorizationStatus {
+        return AuthorizationStatus(rawValue: ALAssetsLibrary.authorizationStatus().rawValue)!
+    }
+    
+    func authorizationStatusForPhotoLibrary() -> AuthorizationStatus {
+        return AuthorizationStatus(rawValue: ALAssetsLibrary.authorizationStatus().rawValue)!
+    }
+    
+    //MARK: - Alerts
+
+    func showPermissionRestrictedForSourceType(type: UIImagePickerControllerSourceType) {
+        self.showAlert("permission_restricted_title_\(type)", message: "permission_restricted_message_\(type)")
+    }
+    
+    func showPermissionPromtForSourceType(type: UIImagePickerControllerSourceType) {
+        self.showGoToSettingsAlert("go_to_settings_title_\(type)", message: "go_to_settings_title_\(type)")
+    }
+    
+    func showNoPhotoTypesAvailableMessage(){
+        //MARK: - if user should be send to settings app, show such button
+        self.showAlert("no_access_to_photo_title", message: "no_access_to_photo_message")
+    }
+    
+    //MARK: -
+    
+    func showAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        self.currentPresentedViewController?.presentViewController(alertVC, animated: true, completion: nil)
+    }
+    
+    
+    func showGoToSettingsAlert(title: String, message: String) {
+    
+        let alertController = UIAlertController (title: title, message: message, preferredStyle: .Alert)
         
-        let settingsAction = UIAlertAction(title: "<##>", style: .Default) { (_) -> Void in
+        let settingsAction = UIAlertAction(title: "go_to_settings_button_title", style: .Default) { (_) -> Void in
             let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
             if let url = settingsUrl {
                 UIApplication.sharedApplication().openURL(url)
             }
         }
         
-        let cancelAction = UIAlertAction(title: "<##>", style: .Default, handler: nil)
+        let cancelAction = UIAlertAction(title: "cancel_button_title", style: .Default, handler: nil)
         alertController.addAction(settingsAction)
         alertController.addAction(cancelAction)
         
         self.currentPresentedViewController?.presentViewController(alertController, animated: true, completion: nil);
-    }
-    
-    func showNoPhotoTypesAvailableMessage(){
-        //MARK: - if user should be send to settings app, show such button
-        let alertVC = UIAlertController(title: "no_access_to_photo_title", message: "no_access_to_photo_message", preferredStyle: .Alert)
-        self.currentPresentedViewController?.presentViewController(alertVC, animated: true, completion: nil)
     }
     
     //MARK: - Photo getting
@@ -139,20 +170,12 @@ class GetPhotoAdapter: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     
         let imagePicker        = UIImagePickerController()
         imagePicker.sourceType = source
-        imagePicker.delegate   = self
+        imagePicker.setImagePickerAction{image in
+            print("FUNC: \(__FUNCTION__), LINE: \(__LINE__)")
+            completion(image)
+        }
+//        imagePicker.delegate   = self
         self.currentPresentedViewController?.presentViewController(imagePicker, animated: true, completion: nil)
     }
-    
-    //MARK: - 
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        print("FUNC: \(__FUNCTION__), LINE:\(__LINE__)")
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        print("FUNC: \(__FUNCTION__), LINE:\(__LINE__)")
-    }
-    
-    
 }
 

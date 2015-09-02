@@ -12,8 +12,15 @@ class ViewController: UIViewController {
 
     let photoPickerAdapter = GetPhotoAdapter()
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     @IBAction func getPhotoButtonPressed(sender: AnyObject) {
-        photoPickerAdapter.showAvailablePhotoSourcesPicker{_ in}
+        photoPickerAdapter.showAvailablePhotoSourcesPicker{
+            [unowned self]
+            image in
+            print("FUNC: \(__FUNCTION__), LINE: \(__LINE__)")
+            self.imageView.image = image
+        }
     }
     
     @IBAction func goToSettingsButtonPressed(sender: AnyObject) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B8DFB4E1B96F3A500798E7A /* UIImagePickerController+closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8DFB4D1B96F3A500798E7A /* UIImagePickerController+closure.swift */; };
 		F35D76B01B9623BC00C3ACCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D76AF1B9623BC00C3ACCB /* AppDelegate.swift */; };
 		F35D76B21B9623BC00C3ACCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D76B11B9623BC00C3ACCB /* ViewController.swift */; };
 		F35D76B51B9623BC00C3ACCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35D76B31B9623BC00C3ACCB /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B8DFB4D1B96F3A500798E7A /* UIImagePickerController+closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+closure.swift"; sourceTree = "<group>"; };
 		F35D76AC1B9623BC00C3ACCB /* PhotoPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35D76AF1B9623BC00C3ACCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F35D76B11B9623BC00C3ACCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				F35D76AF1B9623BC00C3ACCB /* AppDelegate.swift */,
 				F35D76B11B9623BC00C3ACCB /* ViewController.swift */,
 				F35D76C11B9623C100C3ACCB /* GetPhotoAdapter.swift */,
+				5B8DFB4D1B96F3A500798E7A /* UIImagePickerController+closure.swift */,
 				F35D76B31B9623BC00C3ACCB /* Main.storyboard */,
 				F35D76B61B9623BC00C3ACCB /* Assets.xcassets */,
 				F35D76B81B9623BC00C3ACCB /* LaunchScreen.storyboard */,
@@ -93,6 +96,7 @@
 		F35D76A41B9623BC00C3ACCB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "novilab-mobile";
 				TargetAttributes = {
@@ -140,6 +144,7 @@
 				F35D76C21B9623C100C3ACCB /* GetPhotoAdapter.swift in Sources */,
 				F35D76B21B9623BC00C3ACCB /* ViewController.swift in Sources */,
 				F35D76B01B9623BC00C3ACCB /* AppDelegate.swift in Sources */,
+				5B8DFB4E1B96F3A500798E7A /* UIImagePickerController+closure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +258,7 @@
 				INFOPLIST_FILE = PhotoPicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker2";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker5";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -265,7 +270,7 @@
 				INFOPLIST_FILE = PhotoPicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker2";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.novilab-mobile.PhotoPicker5";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
